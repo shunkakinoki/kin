@@ -19,7 +19,7 @@ jobs:
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
       - name: Install Dependencies
-        run: sudo apt-get update && sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libayatana-appindicator3-dev librsvg2-dev
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev patchelf
       - name: Cache
         uses: Swatinem/rust-cache@v2
       - name: Check
@@ -32,7 +32,7 @@ jobs:
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
       - name: Install Dependencies
-        run: sudo apt-get update && sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libayatana-appindicator3-dev librsvg2-dev
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev patchelf
       - name: Cache
         uses: Swatinem/rust-cache@v2
       - name: Test
@@ -45,7 +45,7 @@ jobs:
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
       - name: Install Dependencies
-        run: sudo apt-get update && sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libayatana-appindicator3-dev librsvg2-dev
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev patchelf
       - name: Cache
         uses: Swatinem/rust-cache@v2
       - name: Fmt
