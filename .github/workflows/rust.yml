@@ -1,0 +1,66 @@
+name: Rust
+on:
+  push:
+    branches:
+      - main
+      - release
+  pull_request:
+    branches:
+      - main
+      - release
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  cargo-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+      - name: Cache
+        uses: Swatinem/rust-cache@v2
+      - name: Check
+        run: cargo check --all-targets --all-features
+  cargo-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+      - name: Cache
+        uses: Swatinem/rust-cache@v2
+      - name: Test
+        run: cargo test --all-targets --all-features
+  cargo-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install Dependencies
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+      - name: Cache
+        uses: Swatinem/rust-cache@v2
+      - name: Fmt
+        run: cargo fmt -- --check
+      - name: Clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+  cargo-check:
+    if: always()
+    needs:
+      - cargo-build
+      - cargo-test
+      - cargo-lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Alls Green
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
