@@ -1,11 +1,12 @@
 import { invoke } from "@tauri-apps/api/core";
-import { useState } from "react";
+import { useId, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
+  const inputId = useId();
 
   async function greet() {
     // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
@@ -37,7 +38,7 @@ function App() {
         }}
       >
         <input
-          id="greet-input"
+          id={inputId}
           onChange={(e) => setName(e.currentTarget.value)}
           placeholder="Enter a name..."
         />
