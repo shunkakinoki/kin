@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "check": "echo \"todo\"",
+    "format": "echo \"todo\"",
+    "lint": "echo \"todo\"",
     "preview": "vite preview",
     "tauri": "tauri"
   },
