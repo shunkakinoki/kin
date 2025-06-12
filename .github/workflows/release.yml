@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - release
-  # TODO: Remove this once we have a release branch
-  pull_request:
 jobs:
   release-tauri:
     permissions:
