@@ -11,7 +11,7 @@
     "tauri": "pnpm --filter desktop tauri"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.0.0-beta.6",
+    "@biomejs/biome": "2.0.0",
     "turbo": "^2.5.4"
   },
   "packageManager": "pnpm@9.15.4"
